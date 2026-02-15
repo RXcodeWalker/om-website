@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Om — Home</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- top progress bar -->
+  <div id="progress-bar" aria-hidden="true"></div>
+
+  <!-- animated background blobs -->
+  <div class="blob blob-1" aria-hidden="true"></div>
+  <div class="blob blob-2" aria-hidden="true"></div>
+  <div class="blob blob-3" aria-hidden="true"></div>
+
+  <!-- header / nav -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="2-blog.html">Blog</a></li>
+          <li><a href="3-projects.html">Projects</a></li>
+          <li><a href="4-achievements.html">Achievements</a></li>
+          <li><a href="5-about.html">About</a></li>
+          <li><a href="6-contact.html">Contact</a></li>
+        </ul>
+
+        <div class="nav-controls">
+          <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+        </div>
+      </nav>
+
+      <section class="hero glass" id="hero">
+        <div class="hero-content">
+          <h1 class="site-title">Welcome to Om’s World 🌍</h1>
+          <p class="lead">Football. Code. Ideas. Growth.</p>
+          <p>NOTE: THIS WEBSITE IS STILL UNDER CONSTRUCTION SO ONLY THE BLOG PAGE WORKS AS OF NOW. 
+          <br>Apologies for the inconvenience :)
+          </p>
+        </div>
+      </section>
+    </div>
+  </header>
+
+  <!-- main -->
+  <main class="container">
+
+    <section class="preview-section fade-in">
+      <h2>Latest blog</h2>
+      <article class="post-card glass tilt-card fade-in">
+        <h3>Arsenal vs City: Tactics, Drama & Glory</h3>
+        <div class="post-meta">Football · Jan 2026</div>
+        <p>A deep dive into the match that could define the title race...</p>
+        <a class="read-more magnetic" href="2-blog.html">Explore Blog →</a>
+      </article>
+    </section>
+
+    <section class="preview-section fade-in">
+      <h2>Featured projects</h2>
+      <div class="project-list">
+        <article class="project-card glass fade-in">
+          <h3>Library Management System</h3>
+          <p>Design notes, architecture and lessons learned.</p>
+          <a class="read-more" href="3-projects.html#library-system">Open →</a>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Om Jhamvar</p>
+    </div>
+  </footer>
+
+  <!-- theme gear + sidebar -->
+  <button id="theme-panel-toggle" class="theme-gear" aria-label="Open theme studio">⚙</button>
+
+  <aside class="theme-sidebar glass hidden" aria-hidden="true">
+    <h3>🎨 Theme Studio</h3>
+    <button class="palette-btn magnetic" data-palette="arctic">Arctic</button>
+    <button class="palette-btn magnetic" data-palette="neon">Neon Night</button>
+    <button class="palette-btn magnetic" data-palette="sunset">Sunset Glow</button>
+    <button class="palette-btn magnetic" data-palette="emerald">Emerald Mist</button>
+  </aside>
+
+  <!-- scripts (ORDER IS IMPORTANT) -->
+  <script src="js/theme.js"></script>
+  <script src="js/scroll.js"></script>
+  <script src="js/transition.js"></script>
+</body>
+</html>

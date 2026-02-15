@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Blog Post</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body class="post-overlay-body">
+
+  <!-- Dimmed Background -->
+  <div class="post-overlay-backdrop"></div>
+
+  <!-- Modal Container -->
+  <main class="post-modal-wrapper">
+
+    <article id="post-content" class="post-modal glass"></article>
+
+    <button class="post-back-btn magnetic" onclick="goBack()">
+      ← Back to Blog
+    </button>
+
+  </main>
+
+  <script src="js/theme.js"></script>
+  <script src="js/post.js"></script>
+
+  <script>
+    function goBack() {
+      window.location.href = "2-blog.html";
+    }
+  </script>
+
+</body>
+</html>

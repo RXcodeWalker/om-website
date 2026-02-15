@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Om — Contact</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div id="progress-bar" aria-hidden="true"></div>
+  <div class="blob blob-1" aria-hidden="true"></div>
+  <div class="blob blob-2" aria-hidden="true"></div>
+  <div class="blob blob-3" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="container">
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="2-blog.html">Blog</a></li>
+          <li><a href="3-projects.html">Projects</a></li>
+          <li><a href="4-achievements.html">Achievements</a></li>
+          <li><a href="5-about.html">About</a></li>
+          <li><a href="6-contact.html">Contact</a></li>
+        </ul>
+
+        <div class="nav-controls">
+          <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="page-intro fade-in">
+      <h1>Contact</h1>
+      <p>Reach out — for collaborations, questions, or feedback.</p>
+    </section>
+
+    <section class="contact-form fade-in">
+      <form action="#" method="post" onsubmit="alert('Form submit disabled in demo'); return false;">
+        <label>
+          Name
+          <input name="name" type="text" required />
+        </label>
+        <label>
+          Message
+          <textarea name="message" rows="5" required></textarea>
+        </label>
+        <button class="read-more" type="submit">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Om Jhamvar</p>
+    </div>
+  </footer>
+
+  <button id="theme-panel-toggle" class="theme-gear" aria-label="Open theme studio">⚙</button>
+  <aside class="theme-sidebar glass hidden" aria-hidden="true">
+    <h3>🎨 Theme Studio</h3>
+    <button class="palette-btn magnetic" data-palette="arctic">Arctic</button>
+    <button class="palette-btn magnetic" data-palette="neon">Neon Night</button>
+    <button class="palette-btn magnetic" data-palette="sunset">Sunset Glow</button>
+    <button class="palette-btn magnetic" data-palette="emerald">Emerald Mist</button>
+  </aside>
+
+  <script src="js/theme.js"></script>
+  <script src="js/scroll.js"></script>
+  <script src="js/transition.js"></script>
+</body>
+</html>
