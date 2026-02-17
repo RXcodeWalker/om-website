@@ -112,29 +112,29 @@
           <button data-palette="lavender" class="palette-btn lavender"></button>
           <button data-palette="crimson" class="palette-btn crimson"></button>
         </div>
-  <script>
-  const buttons = document.querySelectorAll(".palette-btn");
-
-  // Load saved theme
-  const savedPalette = localStorage.getItem("palette");
-  if (savedPalette) {
-    document.documentElement.setAttribute("data-palette", savedPalette);
-    document.querySelector(`[data-palette="${savedPalette}"]`)?.classList.add("active");
-  }
-
-  buttons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const palette = btn.dataset.palette;
-
-      document.documentElement.setAttribute("data-palette", palette);
-      localStorage.setItem("palette", palette);
-
-      buttons.forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
+    <script>
+    const buttons = document.querySelectorAll(".palette-btn");
+  
+    // Load saved theme
+    const savedPalette = localStorage.getItem("palette");
+    if (savedPalette) {
+      document.documentElement.setAttribute("data-palette", savedPalette);
+      document.querySelector(`[data-palette="${savedPalette}"]`)?.classList.add("active");
+    }
+  
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const palette = btn.dataset.palette;
+  
+        document.documentElement.setAttribute("data-palette", palette);
+        localStorage.setItem("palette", palette);
+  
+        buttons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+      });
     });
-  });
-</script>
-
+  </script>
+  
 
   <!-- scripts (ORDER IS IMPORTANT) -->
   <script src="js/theme.js"></script>
@@ -142,3 +142,4 @@
   <script src="js/transition.js"></script>
 </body>
 </html>
+
