@@ -31,7 +31,7 @@ async function loadBlog() {
     // Render cards
     posts.forEach((post, index) => {
       const article = document.createElement("article");
-      article.className = "post-card glass"; // uses CSS glass style
+      article.className = "post-card glass sonoma-panel"; // uses CSS glass style
       // set data-category for filtering (normalized)
       const categoryNormalized = (post.category || "Uncategorized").trim();
       article.dataset.category = categoryNormalized;
