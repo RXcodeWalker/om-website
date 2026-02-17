@@ -132,3 +132,131 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
+// sonoma style stuff
+// Sonoma panels: pointer parallax + scroll micro-depth
+// Drop into theme.js or a new sonoma.js and import it.
+// Respects prefers-reduced-motion, uses requestAnimationFrame for smoothness.
+
+(function () {
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const panels = Array.from(document.querySelectorAll('.sonoma-panel'));
+  if (!panels.length) return;
+
+  // helper: clamp
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+
+  // pointer parallax
+  panels.forEach(panel => {
+    let rect = null;
+    let tick = false;
+
+    const state = { mx: 0, my: 0, tx: 0, ty: 0 };
+
+    function updateRect() { rect = panel.getBoundingClientRect(); }
+
+    // pointer handler (mouse)
+    function onPointer(e) {
+      if (reducedMotion) return;
+      if (!rect) updateRect();
+      const px = ((e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2)); // -1 .. 1
+      const py = ((e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2)); // -1 .. 1
+
+      state.mx = clamp(px, -1, 1);
+      state.my = clamp(py, -1, 1);
+      if (!tick) requestAnimationFrame(applyPointer);
+      tick = true;
+    }
+
+    function applyPointer() {
+      // pointer intensity and smoothing
+      const intensity =  varOrDefault('--sonoma-pointer-intensity', 18);
+      const ease = 0.12;
+
+      // target transforms
+      const tx = (state.mx * intensity * 0.35).toFixed(2) + 'px';
+      const ty = (state.my * intensity * 0.18).toFixed(2) + 'px';
+
+      // small tilt (degrees) -> applied in CSS using variables
+      const pxVar = (state.mx * intensity * 0.25).toFixed(2) + 'px';
+      const pyVar = (state.my * intensity * 0.25).toFixed(2) + 'px';
+
+      panel.style.setProperty('--p-x', state.mx.toFixed(3));
+      panel.style.setProperty('--p-y', state.my.toFixed(3));
+      panel.style.setProperty('--t-x', tx);
+      panel.style.setProperty('--t-y', ty);
+      tick = false;
+    }
+
+    // scroll micro-depth
+    function onScroll() {
+      if (reducedMotion) return;
+      if (!rect) updateRect();
+      const viewportCenter = window.innerHeight / 2;
+      const panelCenter = rect.top + rect.height / 2;
+      const distance = panelCenter - viewportCenter;
+      const normalized = clamp(distance / window.innerHeight, -1, 1); // -1..1
+      // use CSS variable --scroll-offset to nudge panel
+      const depthScale = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--sonoma-depth-scale')) || 0.012;
+      const offset = Math.round(normalized * 100 * depthScale * 100) / 100;
+      panel.style.setProperty('--scroll-offset', offset);
+    }
+
+    // helper to read numeric CSS var or fallback
+    function varOrDefault(name, fallback) {
+      const v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+      return v ? parseFloat(v) : fallback;
+    }
+
+    // events
+    panel.addEventListener('pointermove', onPointer, { passive: true });
+    panel.addEventListener('pointerleave', () => {
+      // reset
+      panel.style.setProperty('--p-x', '0');
+      panel.style.setProperty('--p-y', '0');
+      panel.style.setProperty('--t-x', '0px');
+      panel.style.setProperty('--t-y', '0px');
+    }, { passive: true });
+
+    // observe resize for accurate rects
+    const ro = new ResizeObserver(() => updateRect());
+    ro.observe(panel);
+
+    // initial rect
+    updateRect();
+  });
+
+  // throttle scroll updates with rAF
+  let scrollTick = false;
+  function scrollLoop() {
+    panels.forEach(p => {
+      const rect = p.getBoundingClientRect();
+      const viewportCenter = window.innerHeight / 2;
+      const panelCenter = rect.top + rect.height / 2;
+      const distance = panelCenter - viewportCenter;
+      const normalized = Math.max(-1, Math.min(1, distance / window.innerHeight));
+      const depthScale = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--sonoma-depth-scale')) || 0.012;
+      const offset = Math.round(normalized * 100 * depthScale * 100) / 100;
+      p.style.setProperty('--scroll-offset', offset);
+    });
+    scrollTick = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (reducedMotion) return;
+    if (!scrollTick) {
+      requestAnimationFrame(scrollLoop);
+      scrollTick = true;
+    }
+  }, { passive: true });
+
+  // run one initial update
+  requestAnimationFrame(scrollLoop);
+})();
+
+const toggle = document.querySelector(".palette-toggle");
+const panel = document.querySelector(".palette-panel");
+
+toggle.addEventListener("click", () => {
+  panel.classList.toggle("active");
+});
