@@ -29,14 +29,19 @@
           <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
         </div>
       </nav>
+
+      <section class="hero glass" id="hero">
+        <div class="hero-content">
+          <h1 class="site-title">Welcome to Om’s Blog Page 🌍</h1>
+          <p class="lead">Football. Code. Ideas. Growth.</p>
+          <p>As a proud Arsenal fan, I mainly talk about football here!</p>
+        </div>
+      </section>
+
     </div>
   </header>
 
   <main class="container blog-page">
-    <section class="page-intro fade-in">
-      <h1>Om's Blog</h1>
-      <p>Deep dives into football tactics, coding journeys, and growth experiments.</p>
-    </section>
 
     <div class="blog-filters fade-in" role="toolbar" aria-label="Filter posts">
       <button class="filter-btn active" data-filter="all">All</button>
@@ -54,15 +59,21 @@
     </div>
   </footer>
 
-  <button id="theme-panel-toggle" class="theme-gear" aria-label="Open theme studio">⚙</button>
+      <div class="palette-container">
+        <button class="palette-toggle">🎨</button>
 
-  <aside class="theme-sidebar glass hidden" aria-hidden="true">
-    <h3>🎨 Theme Studio</h3>
-    <button class="palette-btn magnetic" data-palette="arctic">Arctic</button>
-    <button class="palette-btn magnetic" data-palette="neon">Neon Night</button>
-    <button class="palette-btn magnetic" data-palette="sunset">Sunset Glow</button>
-    <button class="palette-btn magnetic" data-palette="emerald">Emerald Mist</button>
-  </aside>
+        <div class="palette-panel">
+          <button data-palette="arctic" class="palette-btn arctic"></button>
+          <button data-palette="neon" class="palette-btn neon"></button>
+          <button data-palette="sunset" class="palette-btn sunset"></button>
+          <button data-palette="emerald" class="palette-btn emerald"></button>
+          <button data-palette="midnight" class="palette-btn midnight"></button>
+          <button data-palette="ocean" class="palette-btn ocean"></button>
+          <button data-palette="rose" class="palette-btn rose"></button>
+          <button data-palette="gold" class="palette-btn gold"></button>
+          <button data-palette="lavender" class="palette-btn lavender"></button>
+          <button data-palette="crimson" class="palette-btn crimson"></button>
+        </div>
 
   <script src="js/theme.js"></script>
   <script src="js/scroll.js"></script>
@@ -70,3 +81,4 @@
   <script src="js/transition.js"></script>
 </body>
 </html>
+
