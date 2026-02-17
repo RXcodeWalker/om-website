@@ -41,7 +41,7 @@ body {
 
 /* DARK MODE */
 html[data-theme="dark"] {
-  --bg-color: #0b0f14;
+  --bg-color: rgba(0, 0, 0, 80%);
   --text-color: #e6eef8;
   --muted-text: #9fb1c9;
 
@@ -55,29 +55,193 @@ html[data-theme="dark"] {
 
 /* COLOR PALETTES */
 
+/* =========================
+   COMPLETE 10 COLOR PALETTES
+========================= */
+
+/* 1 — Arctic */
 html[data-palette="arctic"] {
   --accent-1: #4cc9f0;
   --accent-2: #4361ee;
   --accent-3: #90e0ef;
 }
 
+/* 2 — Neon */
 html[data-palette="neon"] {
   --accent-1: #00f5d4;
   --accent-2: #ff00c8;
   --accent-3: #ffe066;
 }
 
+/* 3 — Sunset */
 html[data-palette="sunset"] {
   --accent-1: #ff7b00;
   --accent-2: #ff006e;
   --accent-3: #ffbe0b;
 }
 
+/* 4 — Emerald */
 html[data-palette="emerald"] {
   --accent-1: #2ec4b6;
   --accent-2: #2a9d8f;
   --accent-3: #80ed99;
 }
+
+/* 5 — Midnight */
+html[data-palette="midnight"] {
+  --accent-1: #6366f1;
+  --accent-2: #8b5cf6;
+  --accent-3: #c4b5fd;
+}
+
+/* 6 — Ocean */
+html[data-palette="ocean"] {
+  --accent-1: #0ea5e9;
+  --accent-2: #0284c7;
+  --accent-3: #7dd3fc;
+}
+
+/* 7 — Rose */
+html[data-palette="rose"] {
+  --accent-1: #f43f5e;
+  --accent-2: #fb7185;
+  --accent-3: #fecdd3;
+}
+
+/* 8 — Gold */
+html[data-palette="gold"] {
+  --accent-1: #f59e0b;
+  --accent-2: #d97706;
+  --accent-3: #fde68a;
+}
+
+/* 9 — Lavender */
+html[data-palette="lavender"] {
+  --accent-1: #a78bfa;
+  --accent-2: #c084fc;
+  --accent-3: #e9d5ff;
+}
+
+/* 10 — Crimson */
+html[data-palette="crimson"] {
+  --accent-1: #dc2626;
+  --accent-2: #ef4444;
+  --accent-3: #fecaca;
+}
+
+/* =========================
+   PALETTE SWITCHER PANEL
+========================= */
+
+/* Container */
+.palette-container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 999;
+}
+
+/* Toggle Button */
+.palette-toggle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  backdrop-filter: blur(20px);
+  background: rgba(255,255,255,0.15);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+.palette-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* Vertical Panel */
+.palette-panel {
+  position: absolute;
+  bottom: 60px;
+  right: 0;
+  display: flex;
+  flex-direction: column;   /* 👈 vertical stack */
+  gap: 10px;
+
+  padding: 14px;
+  border-radius: 20px;
+
+  backdrop-filter: blur(30px);
+  background: rgba(255,255,255,0.12);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+/* When Active */
+.palette-panel.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+
+.palette-switcher {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 18px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+  z-index: 999;
+}
+
+/* Individual Buttons */
+.palette-btn {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+/* Hover Depth */
+.palette-btn:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 12px rgba(255,255,255,0.4);
+}
+
+/* Active State */
+.palette-btn.active {
+  outline: 2px solid white;
+  outline-offset: 3px;
+}
+
+/* Button Gradients */
+
+/* Gradients */
+.palette-btn.arctic { background: linear-gradient(135deg, #4cc9f0, #4361ee); }
+.palette-btn.neon { background: linear-gradient(135deg, #00f5d4, #ff00c8); }
+.palette-btn.sunset { background: linear-gradient(135deg, #ff7b00, #ff006e); }
+.palette-btn.emerald { background: linear-gradient(135deg, #2ec4b6, #2a9d8f); }
+.palette-btn.midnight { background: linear-gradient(135deg, #6366f1, #8b5cf6); }
+.palette-btn.ocean { background: linear-gradient(135deg, #0ea5e9, #0284c7); }
+.palette-btn.rose { background: linear-gradient(135deg, #f43f5e, #fb7185); }
+.palette-btn.gold { background: linear-gradient(135deg, #f59e0b, #d97706); }
+.palette-btn.lavender { background: linear-gradient(135deg, #a78bfa, #c084fc); }
+.palette-btn.crimson { background: linear-gradient(135deg, #dc2626, #ef4444); }
+
 
 /* BACKGROUND */
 html {
@@ -664,48 +828,138 @@ html[data-theme="dark"] .post-modal {
   line-height: 1.9;
 }
 
-/* ================= CONTACT PAGE ================= */
+/* -------------------------
+   macOS Sonoma-like panels
+   ------------------------- */
 
-.contact-page {
-  padding-top: 3rem;
+/* tweak these variables to match your theme */
+:root{
+  --sonoma-panel-radius: 16px;
+  --sonoma-panel-bg: linear-gradient(180deg, rgba(255,255,255,0.3), rgba(255,255,255,0.1));
+  --sonoma-border: rgba(255,255,255,0.08);
+  --sonoma-accent: 255,255,255; /* accent color for sweep (r,g,b) */
+  --sonoma-shadow-base: 0 8px 30px rgba(10,12,18,0.25);
+  --sonoma-shadow-hover: 0 18px 60px rgba(10,12,18,0.35);
+  --sonoma-noise-opacity: 0.035;
+  --sonoma-sweep-duration: 6s;
+  --sonoma-depth-scale: 0.012; /* scroll depth intensity */
+  --sonoma-pointer-intensity: 18; /* px shadow/parallax intensity */
 }
 
-.contact-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
+/* panel core style */
+.sonoma-panel{
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--sonoma-panel-radius);
+  background: var(--sonoma-panel-bg);
+  border: 1px solid var(--sonoma-border);
+  backdrop-filter: blur(10px) saturate(120%);
+  -webkit-backdrop-filter: blur(10px) saturate(120%);
+  box-shadow: var(--sonoma-shadow-base);
+  transition: transform 300ms cubic-bezier(.2,.9,.2,1), box-shadow 300ms cubic-bezier(.2,.9,.2,1);
+  will-change: transform, box-shadow;
+  transform-style: preserve-3d;
+  isolation: isolate;
 }
 
-.contact-card {
-  padding: 2.5rem;
-  border-radius: 22px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* content container (so inner content doesn't get overlapped by pseudo elements) */
+.sonoma-panel > .panel-content {
+  position: relative;
+  z-index: 3;
+  padding: 1.25rem; /* adjust to taste */
 }
 
-.contact-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+/* subtle glass border 'rim' */
+.sonoma-panel::marker, .sonoma-panel::after { box-sizing: border-box; }
+
+/* animated light sweep - pseudo element */
+.sonoma-panel::before{
+  content: "";
+  position: absolute;
+  inset: -40% -40%;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    110deg,
+    transparent 25%,
+    rgba(var(--sonoma-accent),0.06) 45%,
+    rgba(var(--sonoma-accent),0.10) 50%,
+    rgba(var(--sonoma-accent),0.06) 55%,
+    transparent 75%
+  );
+  transform: translateX(-100%) rotate(12deg);
+  mix-blend-mode: screen;
+  filter: blur(14px) saturate(140%);
+  opacity: 0.9;
+  animation: sonoma-light-sweep var(--sonoma-sweep-duration) linear infinite;
 }
 
-.contact-card h3 {
-  margin-bottom: 0.8rem;
-  font-size: 1.4rem;
+/* noise texture overlay for micro grain */
+.sonoma-panel::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: var(--sonoma-noise-opacity);
+  background-image: url("data:image/svg+xml;utf8,\
+  <svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'>\
+  <filter id='t'><feTurbulence baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter>\
+  <rect width='120' height='120' filter='url(%23t)' opacity='0.08' fill='black'/></svg>");
+  mix-blend-mode: overlay;
+  transform-origin: center;
 }
 
-.contact-card p {
-  margin-bottom: 1.5rem;
-  opacity: 0.8;
+/* reduce motion preference */
+@media (prefers-reduced-motion: reduce){
+  .sonoma-panel::before { animation: none; opacity: 0.6; }
+  .sonoma-panel { transition: none; }
 }
 
-.contact-btn {
-  display: inline-block;
-  padding: 0.6rem 1.2rem;
-  border-radius: 14px;
-  background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
-  color: white;
-  font-weight: 600;
-  text-decoration: none;
-  transition: transform 0.2s ease;
+/* sweep keyframes */
+@keyframes sonoma-light-sweep{
+  from { transform: translateX(-100%) rotate(12deg); }
+  to   { transform: translateX(100%) rotate(12deg); }
+}
+
+/* hover boost */
+.sonoma-panel:hover{
+  box-shadow: var(--sonoma-shadow-hover);
+}
+
+/* pointer-driven shadow + micro tilt using CSS variables updated by JS */
+.sonoma-panel{
+  --p-x: 0px;
+  --p-y: 0px;
+  --t-x: 0px;
+  --t-y: 0px;
+  transform: translate3d(var(--t-x), var(--t-y), 0) rotateX(calc(var(--p-y) * 0.04deg)) rotateY(calc(var(--p-x) * -0.04deg));
+  box-shadow: calc(var(--p-x) * -0.1px) calc(var(--p-y) * 0.2px) 30px rgba(12,14,20,0.18), 0 6px 18px rgba(8,10,12,0.12);
+}
+
+/* subtle parallax for inner background elements (if any) */
+.sonoma-panel .parallax-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  transform: translate3d(0,0,0);
+  pointer-events: none;
+}
+
+/* micro depth anchor when scrolling (JS toggles --scroll-offset) */
+.sonoma-panel{
+  --scroll-offset: 0;
+  transform: translate3d(0, calc(var(--scroll-offset) * 1px), 0) scale(calc(1 + var(--scroll-offset) * 0.0008));
+}
+
+/* small utility: gentle focus ring for keyboard users */
+.sonoma-panel:focus-within{
+  outline: 2px solid rgba(255,255,255,0.06);
+  outline-offset: 4px;
+}
+
+/* responsive tuning */
+@media (max-width: 640px){
+  .sonoma-panel { border-radius: 12px; }
+  .sonoma-panel::before { filter: blur(10px); }
 }
