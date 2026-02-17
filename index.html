@@ -70,6 +70,13 @@
       </div>
     </section>
 
+    <article class="sonoma-panel" tabindex="0">
+      <div class="panel-content">
+        <h2>Feature panel title</h2>
+        <p>Some body content inside a Sonoma-style glass panel. Put images, stats, links, whatever you want.</p>
+      </div>
+    </article>
+    
   </main>
 
   <!-- footer -->
@@ -79,16 +86,55 @@
     </div>
   </footer>
 
-  <!-- theme gear + sidebar -->
+  <!-- theme gear + sidebar 
   <button id="theme-panel-toggle" class="theme-gear" aria-label="Open theme studio">⚙</button>
 
-  <aside class="theme-sidebar glass hidden" aria-hidden="true">
+ <aside class="theme-sidebar glass hidden" aria-hidden="true">
     <h3>🎨 Theme Studio</h3>
-    <button class="palette-btn magnetic" data-palette="arctic">Arctic</button>
-    <button class="palette-btn magnetic" data-palette="neon">Neon Night</button>
-    <button class="palette-btn magnetic" data-palette="sunset">Sunset Glow</button>
-    <button class="palette-btn magnetic" data-palette="emerald">Emerald Mist</button>
+
+      </div>
+
   </aside>
+-->
+
+      <div class="palette-container">
+        <button class="palette-toggle">🎨</button>
+
+        <div class="palette-panel">
+          <button data-palette="arctic" class="palette-btn arctic"></button>
+          <button data-palette="neon" class="palette-btn neon"></button>
+          <button data-palette="sunset" class="palette-btn sunset"></button>
+          <button data-palette="emerald" class="palette-btn emerald"></button>
+          <button data-palette="midnight" class="palette-btn midnight"></button>
+          <button data-palette="ocean" class="palette-btn ocean"></button>
+          <button data-palette="rose" class="palette-btn rose"></button>
+          <button data-palette="gold" class="palette-btn gold"></button>
+          <button data-palette="lavender" class="palette-btn lavender"></button>
+          <button data-palette="crimson" class="palette-btn crimson"></button>
+        </div>
+  <script>
+  const buttons = document.querySelectorAll(".palette-btn");
+
+  // Load saved theme
+  const savedPalette = localStorage.getItem("palette");
+  if (savedPalette) {
+    document.documentElement.setAttribute("data-palette", savedPalette);
+    document.querySelector(`[data-palette="${savedPalette}"]`)?.classList.add("active");
+  }
+
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const palette = btn.dataset.palette;
+
+      document.documentElement.setAttribute("data-palette", palette);
+      localStorage.setItem("palette", palette);
+
+      buttons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+    });
+  });
+</script>
+
 
   <!-- scripts (ORDER IS IMPORTANT) -->
   <script src="js/theme.js"></script>
